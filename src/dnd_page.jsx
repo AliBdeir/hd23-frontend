@@ -47,10 +47,9 @@ export default function DNDPage() {
             <div>
 
                 {/* Inserting the logo */}
-                <div className="flex flex-col items-center justify-center h-64 max-w-md mx-auto">
+                <div className="flex flex-col items-center justify-center h-64 max-w-md mx-auto my-12">
                     <img src={logo} alt="Logo" className="max-w-xs max-h-xs w-full h-auto" /> {/* Tailwind CSS classes for size and other styles */}
                 </div>
-                <h1 className="mb-4">File Upload</h1>
                 <MyDropzone />
                 {/* Other components can go here */}
             </div>
