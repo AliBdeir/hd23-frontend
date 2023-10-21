@@ -5,15 +5,9 @@ import { Outlet } from "react-router-dom";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 import DNDPage from "./dnd_page.jsx"
+import ResultPageLayout, { ResultPage } from "./result_page.jsx"
 
 import "./index.css"
-
-function ResultPageLayout() {
-  return <div>
-    something
-    <Outlet />
-  </div>
-}
 
 function MainPageLayout() {
   return <Outlet />
@@ -37,7 +31,7 @@ function App() {
       children: [
         {
           path: "/result",
-          element: <div>other</div>
+          element: <ResultPage />
         }
       ]
     }
