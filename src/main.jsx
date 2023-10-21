@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import logo from './assets/images/coursify_logo.png';
 
 import "./index.css"
 
@@ -42,14 +43,18 @@ function MyDropzone() {
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        CoursifAI
-      </h1>
-      <h1>File Upload</h1>
-      <MyDropzone />
-      {/* <Button >hello</Button> */}
-    </>
+    <div className="flex flex-col justify-center items-center min-h-screen">
+      <div>
+        
+        {/* Inserting the logo */}
+        <div className="flex flex-col items-center justify-center h-64 max-w-md mx-auto">
+          <img src={logo} alt="Logo" className="mw-full h-auto" /> {/* Tailwind CSS classes for size and other styles */}
+        </div>
+        <h1 className="mb-4">File Upload</h1>
+        <MyDropzone />
+        {/* Other components can go here */}
+      </div>
+    </div>
   )
 }
 
