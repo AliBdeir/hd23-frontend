@@ -26,11 +26,11 @@ function App() {
       ]
     },
     {
-      path: "/result",
+      path: "/result/:fileName",
       element: <ResultPageLayout />,
       children: [
         {
-          path: "/result",
+          path: "/result/:fileName",
           element: <ResultPage />
         }
       ]

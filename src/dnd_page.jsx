@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { useNavigate } from 'react-router-dom';
 import ReactDOM from 'react-dom/client'
 
 import Button from '@mui/material/Button';
@@ -9,21 +10,27 @@ import logo from './assets/images/coursify_logo.png';
 
 
 function MyDropzone() {
+    const navigate = useNavigate();
     const onDrop = useCallback((acceptedFiles) => {
-        acceptedFiles.forEach((file) => {
-            const reader = new FileReader()
+        // Assuming only one file is uploaded. You can handle multiple files if needed.
+        const file = acceptedFiles[0];
 
-            reader.onabort = () => console.log('file reading was aborted')
-            reader.onerror = () => console.log('file reading has failed')
-            reader.onload = () => {
-                // Do whatever you want with the file contents
-                const binaryStr = reader.result
-                console.log(binaryStr)
-            }
-            reader.readAsArrayBuffer(file)
-        })
+        // Redirect to the ResultPage with the file's name
+        navigate(`/result/${file.name}`);
+        // acceptedFiles.forEach((file) => {
+        //     const reader = new FileReader()
 
-    }, [])
+        //     reader.onabort = () => console.log('file reading was aborted')
+        //     reader.onerror = () => console.log('file reading has failed')
+        //     reader.onload = () => {
+        //         // Do whatever you want with the file contents
+        //         const binaryStr = reader.result
+        //         console.log(binaryStr)
+        //     }
+        //     reader.readAsArrayBuffer(file)
+        // })
+
+    }, [navigate])
     const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
     return (
