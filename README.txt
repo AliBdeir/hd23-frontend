@@ -1,4 +1,6 @@
 Contributors:
 
-Ali Elzein
+Adam Bendawi
+Ali Bdeir
+Ali Al Zein
 Abdul Khan
