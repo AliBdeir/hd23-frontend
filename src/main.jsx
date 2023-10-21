@@ -48,7 +48,7 @@ function App() {
         
         {/* Inserting the logo */}
         <div className="flex flex-col items-center justify-center h-64 max-w-md mx-auto">
-          <img src={logo} alt="Logo" className="mw-full h-auto" /> {/* Tailwind CSS classes for size and other styles */}
+          <img src={logo} alt="Logo" className="max-w-xs max-h-xs w-full h-auto" /> {/* Tailwind CSS classes for size and other styles */}
         </div>
         <h1 className="mb-4">File Upload</h1>
         <MyDropzone />
