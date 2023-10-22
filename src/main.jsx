@@ -27,18 +27,26 @@ function App() {
     },
     {
       path: "/result",
-      element: <ResultPage />
+      // element: <ResultPageLayout />,
+      children: [
+        {
+          path: "/result",
+          element: <ResultPage />
+        },
+        {
+          path: "/result/:chapter_id/flash",
+          element: <ResultPage />
+        },
+        {
+          path: "/result/:chapter_id/quiz",
+          element: <ResultPage />
+        },
+        {
+          path: "/result/:chapter_id/assignment",
+          element: <ResultPage />
+        }
+      ]
     }
-    // {
-    //   path: "/result",
-    //   element: <ResultPageLayout />,
-    //   children: [
-    //     {
-    //       path: "/result",
-    //       element: <ResultPage />
-    //     }
-    //   ]
-    // }
   ]);
 
   return <div>
