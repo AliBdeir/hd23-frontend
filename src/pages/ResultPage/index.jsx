@@ -5,14 +5,12 @@ import Typography from '@mui/material/Typography';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ButtonGroup from '@mui/material/ButtonGroup';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import mockjson from "../../assets/mock.json"
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { DeleteForever } from "@mui/icons-material";
+// import mockjson from "../../assets/mock.json"
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -24,19 +22,43 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import QuizIcon from '@mui/icons-material/Quiz';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
+import axios from "axios";
+
+import appConfig from "../../appConfig.js"
+
+
 function MyListItem({ text, icon, handleClick }) {
     return <ListItem onClick={handleClick}>
         <ListItemButton>
             <ListItemIcon>{icon}</ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={<Typography variant="h6">{text}</Typography>} />
         </ListItemButton>
     </ListItem>
 }
 
 export function ResultPage() {
-    const navigate = useNavigate();
-
+    const [sessionData, setSessionData] = useState(null)
     const [expanded, setExpanded] = useState(false);
+    
+    const navigate = useNavigate()
+
+    const { sessionId } = useParams();
+    console.log(sessionId)
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            try {
+                const response = await axios.get(`${appConfig.baseUrl}/api/Session/${sessionId}/Overview`);
+                console.log(response.data)
+                setSessionData(response.data)
+
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        }
+
+        fetchSession()
+    }, [])
 
     const handleChange = (panel) => (event, isExpanded) => {
         console.log(panel)
@@ -46,8 +68,12 @@ export function ResultPage() {
     return (
         <div>
             <h1 className="text-3xl font-bold py-16">Upload is successful here are the chapters of that book:</h1>
-            {mockjson.children.map((e, i) => {
+            {sessionData && sessionData.map((chapter, i) => {
+                
                 return <Accordion
+                    style={{
+                        padding: "10px 10px 50px 10px"
+                    }}
                     expanded={expanded == `panel${i}`}
                     onChange={handleChange(`panel${i}`)}
                     key={i}>
@@ -56,28 +82,23 @@ export function ResultPage() {
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
-                        <Typography fontWeight="bold">{e.title}</Typography>
+                        <Typography variant="h5" fontWeight="bold">{chapter.title}</Typography>
                     </AccordionSummary>
 
                     <AccordionDetails>
-                        <ButtonGroup
-                            className="w-full"
-                            variant="outlined"
-                            aria-label="outlined primary button group"
-                            orientation="vertical"
-                        >
+
                             <List>
                                 <MyListItem text="Flash Cards!" icon={<FlashOnIcon />}
-                                    handleClick={() => { navigate("/result/1/flash") }}
+                                    handleClick={() => { navigate(`/result/${sessionId}/${chapter.id}/flash`) }}
                                 />
                                 <MyListItem text="Quiz" icon={<QuizIcon />}
-                                    handleClick={() => { navigate("/result/1/quiz") }}
+                                    handleClick={() => { navigate(`/result/${sessionId}/${chapter.id}/quiz`) }}
                                 />
                                 <MyListItem text="Assignment" icon={<AssignmentIcon />}
-                                    handleClick={() => { navigate("/result/1/assignment") }}
+                                    handleClick={() => { navigate(`/result/${sessionId}/${chapter.id}/assignment`) }}
                                 />
                             </List>
-                        </ButtonGroup>
+
                     </AccordionDetails>
                 </Accordion>
             })}

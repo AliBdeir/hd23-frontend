@@ -14,6 +14,8 @@ import { Radio, RadioGroup, FormControl, FormControlLabel, FormLabel } from '@mu
 
 
 function QuizCard({ question, options, correctans, userAnswer, isQuizSubmitted, onOptionChange }) {
+  
+  console.log({ question, options, correctans, userAnswer, isQuizSubmitted, onOptionChange })
 
   // Function to handle option selection, calling the handler passed via props
   const handleOptionChange = (event) => {
