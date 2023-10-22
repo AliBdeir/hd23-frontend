@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Outlet } from "react-router-dom";
 
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-
+import QuizPage from './quiz_page'
 import DNDPage from "./dnd_page.jsx"
 import { ResultPageLayout, ResultPage } from "./result_page.jsx"
 
@@ -37,6 +37,7 @@ function App() {
         {
           path: "/result/:chapter_id/flash",
           element: <FlashcardPage />
+     
         },
         {
           path: "/result/:chapter_id/quiz",
@@ -45,9 +46,25 @@ function App() {
         {
           path: "/result/:chapter_id/assignment",
           element: <ResultPage />
-        }
+        },
+        
       ]
+    },
+    //temp quizpage route
+    {
+      path: "/quizpage",
+      element: <QuizPage />
     }
+    // {
+    //   path: "/result",
+    //   element: <ResultPageLayout />,
+    //   children: [
+    //     {
+    //       path: "/result",
+    //       element: <ResultPage />
+    //     }
+    //   ]
+    // }
   ]);
 
   return <div>

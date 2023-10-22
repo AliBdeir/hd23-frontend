@@ -16,4 +16,27 @@
     display: block;
     margin: 5px 0;
   }
+
+  /* qcard.css */
+.correct-answer {
+  color: green;
+}
+
+.incorrect-answer {
+  color: red;
+}
+
+.correct-answer-text {
+  color: red;
+}
+
+/* Add styles for correct and incorrect card states */
+.quiz-card.correct {
+  border: 2px solid green;
+}
+
+.quiz-card.incorrect {
+  border: 2px solid red;
+}
+
   

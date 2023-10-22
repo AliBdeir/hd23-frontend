@@ -93,4 +93,3 @@ export function ResultPageLayout() {
         </div>
     </div>
 }
-
