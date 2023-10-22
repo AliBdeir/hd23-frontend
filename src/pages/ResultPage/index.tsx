@@ -28,10 +28,13 @@ import { SessionOverview } from "./types";
 
 // import appConfig from "../../appConfig.js"
 
-function MyListItem(props: { text: string; icon: React.ReactNode; handleClick: React.MouseEventHandler<HTMLLIElement> }) {
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+
+function MyListItem(props: { text: string; icon: React.ReactNode; handleClick: React.MouseEventHandler<HTMLLIElement>; disabled: boolean }) {
   return (
-    <ListItem onClick={props.handleClick}>
-      <ListItemButton>
+    <ListItem  onClick={props.handleClick}>
+      <ListItemButton disabled={props.disabled}>
         <ListItemIcon>{props.icon}</ListItemIcon>
         <ListItemText primary={<Typography variant="h6">{props.text}</Typography>} />
       </ListItemButton>
@@ -95,6 +98,7 @@ export function ResultPage() {
                   <List>
                     <MyListItem
                       text="Flash Cards!"
+                      disabled={false}
                       icon={<FlashOnIcon />}
                       handleClick={() => {
                         navigate(`/result/${sessionId}/${chapter.id}/flash`);
@@ -102,6 +106,7 @@ export function ResultPage() {
                     />
                     <MyListItem
                       text="Quiz"
+                      disabled={false}
                       icon={<QuizIcon />}
                       handleClick={() => {
                         navigate(`/result/${sessionId}/${chapter.id}/quiz`);
@@ -109,9 +114,26 @@ export function ResultPage() {
                     />
                     <MyListItem
                       text="Assignment"
+                      disabled={false}
                       icon={<AssignmentIcon />}
                       handleClick={() => {
                         navigate(`/result/${sessionId}/${chapter.id}/assignment`);
+                      }}
+                    />
+                    <MyListItem
+                      text="Exam"
+                      disabled={true}
+                      icon={<DriveFileRenameOutlineIcon />}
+                      handleClick={() => {
+                        // navigate(`/result/${sessionId}/${chapter.id}/exam`);
+                      }}
+                    />
+                    <MyListItem
+                      text="Lecture"
+                      disabled={true}
+                      icon={<OndemandVideoIcon />}
+                      handleClick={() => {
+                        // navigate(`/result/${sessionId}/${chapter.id}/lecture`);
                       }}
                     />
                   </List>
