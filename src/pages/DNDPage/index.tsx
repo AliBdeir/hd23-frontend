@@ -6,7 +6,7 @@ import { CircularProgress } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
-import logo from "/assets/images/coursify_logo.png";
+import logo from "/assets/images/courseify_logo.png";
 
 function MyDropzone() {
   const navigate = useNavigate();
