@@ -9,7 +9,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import mockjson from "./assets/mock.json"
+import mockjson from "../../assets/mock.json"
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { DeleteForever } from "@mui/icons-material";
@@ -70,10 +70,10 @@ export function ResultPage() {
                                 <MyListItem text="Flash Cards!" icon={<FlashOnIcon />}
                                     handleClick={() => { navigate("/result/1/flash") }}
                                 />
-                                <MyListItem text="Quizzes" icon={<QuizIcon />}
+                                <MyListItem text="Quiz" icon={<QuizIcon />}
                                     handleClick={() => { navigate("/result/1/quiz") }}
                                 />
-                                <MyListItem text="Assignments" icon={<AssignmentIcon />}
+                                <MyListItem text="Assignment" icon={<AssignmentIcon />}
                                     handleClick={() => { navigate("/result/1/assignment") }}
                                 />
                             </List>

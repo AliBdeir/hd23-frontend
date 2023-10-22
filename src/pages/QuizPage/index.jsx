@@ -1,6 +1,6 @@
 // src/quiz_page.jsx
 import React, { useState } from 'react';
-import QuizCard from './components/QuizCard';
+import QuizCard from '../../components/QuizCard';
 import { Button } from '@mui/material';
 
 function QuizPage() {

@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client'
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import logo from './assets/images/coursify_logo.png';
+import logo from '../../assets/images/coursify_logo.png';
 import axios from 'axios';
 
 function MyDropzone() {

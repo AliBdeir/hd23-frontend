@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import Flashcard from './components/FlashCard/index.jsx';
+import Flashcard from '../../components/FlashCard/index.jsx';
 
 import "./index.css"
 

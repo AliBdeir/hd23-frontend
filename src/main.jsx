@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import { Outlet } from "react-router-dom";
 
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-import QuizPage from './quiz_page'
-import DNDPage from "./dnd_page.jsx"
-import { ResultPageLayout, ResultPage } from "./result_page.jsx"
+import QuizPage from './pages/QuizPage/index.jsx'
+import DNDPage from "./pages/DNDPage/index.jsx"
+import { ResultPageLayout, ResultPage } from "./pages/ResultPage/index.jsx"
 
 import "./index.css"
-import FlashcardPage from './flashcard_page.jsx';
+import FlashcardPage from './pages/FlashcardPage/index.jsx';
 
 function MainPageLayout() {
   return <Outlet />
@@ -50,17 +50,6 @@ function App() {
         
       ]
     },
-    //temp quizpage route
-    // {
-    //   path: "/result",
-    //   element: <ResultPageLayout />,
-    //   children: [
-    //     {
-    //       path: "/result",
-    //       element: <ResultPage />
-    //     }
-    //   ]
-    // }
   ]);
 
   return <div>
