@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import QuizCard from "../../components/QuizCard";
 import { MCQuestion } from "./types";
+import { ProgressCircle } from "../../components/Progress/progress";
 
 function QuizPage() {
   const { sessionId, chapterId } = useParams();
@@ -21,8 +22,6 @@ function QuizPage() {
         },
       }),
   });
-
-  const [userAnswers, setUserAnswers] = useState({});
 
   const [isQuizSubmitted, setIsQuizSubmitted] = useState(false);
 
@@ -42,13 +41,18 @@ function QuizPage() {
         }}
       >
         <div className="quiz-section flex flex-col items-center">
+          {query.isLoading && (
+            <div>
+              <ProgressCircle />
+            </div>
+          )}
           {query.data?.data && query.data.data.map((data, index) => <QuizCard key={index} question={data} submitted={isQuizSubmitted} />)}
+          {!isQuizSubmitted && (
+            <Button variant="contained" type="submit">
+              Submit Quiz
+            </Button>
+          )}
         </div>
-        {!isQuizSubmitted && (
-          <Button variant="contained" type="submit">
-            Submit Quiz
-          </Button>
-        )}
       </form>
     </div>
   );
