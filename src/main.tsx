@@ -10,6 +10,7 @@ import "./index.css";
 import FlashcardPage from "./pages/FlashcardPage/index.jsx";
 import SessionsPage from "./pages/SessionsPage/index.jsx";
 import axios from "axios";
+import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function MainPageLayout() {
   return (
@@ -22,6 +23,15 @@ function MainPageLayout() {
 }
 
 axios.defaults.baseURL = "https://courseifybackend.azurewebsites.net/api";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      retryOnMount: false,
+    },
+  },
+});
 
 function App() {
   const router = createBrowserRouter([
@@ -71,7 +81,9 @@ function App() {
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </div>
   );
 }
