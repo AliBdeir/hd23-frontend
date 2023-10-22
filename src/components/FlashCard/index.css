@@ -1,0 +1,51 @@
+/* Flashcard.css */
+.flashcard-container {
+    perspective: 1000px;
+  }
+  
+  .flashcard-flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  /* Flip the front panel when hovered */
+  .flashcard-container:hover .flashcard-flipper, .flashcard-container.hover .flashcard-flipper {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard-front, .flashcard-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Set the back panel's position and initial visibility */
+  .flashcard-front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+  
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+
+  /* index.css */
+.card-style {
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* Class for the temporary border during flipping */
+  .card-flipping {
+    border: 2px solid #000;
+  }
+  
