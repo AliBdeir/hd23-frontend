@@ -26,15 +26,19 @@ function App() {
       ]
     },
     {
-      path: "/result/:fileName",
-      element: <ResultPageLayout />,
-      children: [
-        {
-          path: "/result/:fileName",
-          element: <ResultPage />
-        }
-      ]
+      path: "/result",
+      element: <ResultPage />
     }
+    // {
+    //   path: "/result",
+    //   element: <ResultPageLayout />,
+    //   children: [
+    //     {
+    //       path: "/result",
+    //       element: <ResultPage />
+    //     }
+    //   ]
+    // }
   ]);
 
   return <div>

@@ -7,30 +7,31 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import logo from './assets/images/coursify_logo.png';
-
+import axios from 'axios';
 
 function MyDropzone() {
     const navigate = useNavigate();
-    const onDrop = useCallback((acceptedFiles) => {
-        // Assuming only one file is uploaded. You can handle multiple files if needed.
+    
+    const onDrop = useCallback(async (acceptedFiles) => {
         const file = acceptedFiles[0];
 
-        // Redirect to the ResultPage with the file's name
-        navigate(`/result/${file.name}`);
-        // acceptedFiles.forEach((file) => {
-        //     const reader = new FileReader()
+        const formData = new FormData();
+        formData.append('file', file);
 
-        //     reader.onabort = () => console.log('file reading was aborted')
-        //     reader.onerror = () => console.log('file reading has failed')
-        //     reader.onload = () => {
-        //         // Do whatever you want with the file contents
-        //         const binaryStr = reader.result
-        //         console.log(binaryStr)
-        //     }
-        //     reader.readAsArrayBuffer(file)
-        // })
+        navigate("/result")
 
-    }, [navigate])
+        // try {
+        //     const response = await axios.post('your_server_base_url/api/pdf/upload', formData, {
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data',
+        //         },
+        //     });
+        //     console.log('File uploaded successfully:', response.data);
+        // } catch (error) {
+        //     console.error('Error uploading file:', error);
+        // }
+    }, []);
+
     const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
     return (
