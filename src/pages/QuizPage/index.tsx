@@ -1,5 +1,5 @@
 // src/quiz_page.jsx
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
@@ -44,6 +44,7 @@ function QuizPage() {
           {query.isLoading && (
             <div>
               <ProgressCircle />
+              <Typography variant="h4">We're making you some quizzes...</Typography>
             </div>
           )}
           {query.data?.data && query.data.data.map((data, index) => <QuizCard key={index} question={data} submitted={isQuizSubmitted} />)}

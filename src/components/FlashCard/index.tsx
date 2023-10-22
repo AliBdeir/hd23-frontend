@@ -11,44 +11,24 @@ type FlashcardProps = {
 
 const Flashcard = ({ title, description }: FlashcardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isFlipping, setIsFlipping] = useState(false);
-
-  const handleFlip = () => {
-    setIsFlipping(true);
-    setIsFlipped(!isFlipped);
-
-    setTimeout(() => {
-      setIsFlipping(false);
-    }, 600);
-  };
-
-  // Determine the class for the card based on the flipping state
-  const cardClass = isFlipping ? "card-style card-flipping" : "card-style";
 
   return (
-    <div className="flashcard-container">
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-        <div onClick={handleFlip} className={cardClass}>
-          <Card>
-            <CardContent>
-              <div className="card-content">
-                <Typography variant="h5" component="div">
-                  {title}
-                </Typography>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div onClick={handleFlip} className={cardClass}>
-          <Card>
-            <CardContent>
-              <div className="card-content">
-                <Typography variant="body2">{description}</Typography>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+    <div style={{ width: "650px", height: "400px" }} onClick={() => setIsFlipped(!isFlipped)}>
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerClassName="w-full h-full">
+        <Card className="w-full h-full flex items-center justify-center text-center">
+          <CardContent>
+            <Typography variant="h3" className="!font-bold">
+              {title}
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className="w-full h-full flex items-center justify-center text-center">
+          <CardContent>
+            <Typography variant="h6" className="!font-bold">
+              {description}
+            </Typography>
+          </CardContent>
+        </Card>
       </ReactCardFlip>
     </div>
   );
