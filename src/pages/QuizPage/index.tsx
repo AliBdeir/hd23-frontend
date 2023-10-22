@@ -30,7 +30,7 @@ function QuizPage() {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 p-8">
       <h1 className="text-5xl font-bold m-4">Quiz</h1>
 
       <form
@@ -47,8 +47,8 @@ function QuizPage() {
             </div>
           )}
           {query.data?.data && query.data.data.map((data, index) => <QuizCard key={index} question={data} submitted={isQuizSubmitted} />)}
-          {!isQuizSubmitted && (
-            <Button variant="contained" type="submit">
+          {!query.isLoading && !isQuizSubmitted && (
+            <Button variant="contained" type="submit" color="secondary">
               Submit Quiz
             </Button>
           )}
