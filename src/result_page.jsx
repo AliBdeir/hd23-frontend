@@ -24,12 +24,6 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import QuizIcon from '@mui/icons-material/Quiz';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
-export default function ResultPageLayout() {
-    return <div>
-        <Outlet />
-    </div>
-}
-
 function MyListItem({ text, icon, handleClick }) {
     return <ListItem onClick={handleClick}>
         <ListItemButton>
@@ -39,7 +33,7 @@ function MyListItem({ text, icon, handleClick }) {
     </ListItem>
 }
 
-export function BasicAccordion() {
+export function ResultPage() {
     const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState(false);
@@ -50,51 +44,53 @@ export function BasicAccordion() {
     };
 
     return (
-        <div className="flex justify-center">
-            <div className="max-w-3xl">
-                <h1 className="text-3xl font-bold py-16">Upload is successful here are the chapters of that book:</h1>
-                {mockjson.children.map((e, i) => {
-                    return <Accordion
-                        expanded={expanded == `panel${i}`}
-                        onChange={handleChange(`panel${i}`)}
-                        key={i}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
+        <div>
+            <h1 className="text-3xl font-bold py-16">Upload is successful here are the chapters of that book:</h1>
+            {mockjson.children.map((e, i) => {
+                return <Accordion
+                    expanded={expanded == `panel${i}`}
+                    onChange={handleChange(`panel${i}`)}
+                    key={i}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography fontWeight="bold">{e.title}</Typography>
+                    </AccordionSummary>
+
+                    <AccordionDetails>
+                        <ButtonGroup
+                            className="w-full"
+                            variant="outlined"
+                            aria-label="outlined primary button group"
+                            orientation="vertical"
                         >
-                            <Typography fontWeight="bold">{e.title}</Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                            <ButtonGroup
-                                className="w-full"
-                                variant="outlined"
-                                aria-label="outlined primary button group"
-                                orientation="vertical"
-                            >
-                                <List>
-                                    <MyListItem text="Flash Cards!" icon={<FlashOnIcon />}
-                                        handleClick={() => {navigate("/result/1/flash")}}
-                                    />
-                                    <MyListItem text="Quizzes" icon={<QuizIcon />}
-                                        handleClick={() => {navigate("/result/1/quiz")}}
-                                    />
-                                    <MyListItem text="Assignments" icon={<AssignmentIcon />}
-                                        handleClick={() => {navigate("/result/1/assignment")}}
-                                    />
-                                </List>
-                            </ButtonGroup>
-                        </AccordionDetails>
-                    </Accordion>
-                })}
-
-            </div>
+                            <List>
+                                <MyListItem text="Flash Cards!" icon={<FlashOnIcon />}
+                                    handleClick={() => { navigate("/result/1/flash") }}
+                                />
+                                <MyListItem text="Quizzes" icon={<QuizIcon />}
+                                    handleClick={() => { navigate("/result/1/quiz") }}
+                                />
+                                <MyListItem text="Assignments" icon={<AssignmentIcon />}
+                                    handleClick={() => { navigate("/result/1/assignment") }}
+                                />
+                            </List>
+                        </ButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            })}
         </div>
     );
 }
 
-export function ResultPage() {
-    return <BasicAccordion />
+
+export function ResultPageLayout() {
+    return <div className="flex justify-center bg-green-500">
+        <div className="max-w-3xl" >
+            <Outlet />
+        </div>
+    </div>
 }
 

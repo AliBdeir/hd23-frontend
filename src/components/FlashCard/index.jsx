@@ -21,27 +21,36 @@ const Flashcard = ({ title, description }) => {
   const cardClass = isFlipping ? 'card-style card-flipping' : 'card-style';
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <div onClick={handleFlip} className={cardClass}>
-        <Card className="card-content">
-          <CardContent>
-            <Typography variant="h5" component="div">
-              {title}
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
+    <div className="flashcard-container">
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+        <div onClick={handleFlip} className={cardClass}>
+          <Card>
+            <CardContent>
+              <div className="card-content">
+              <Typography variant="h5" component="div">
+                {title}
+              </Typography>
 
-      <div onClick={handleFlip} className={cardClass}>
-        <Card className="card-content">
-          <CardContent>
-            <Typography variant="body2">
-              {description}
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-    </ReactCardFlip>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div onClick={handleFlip} className={cardClass}>
+          <Card>
+            <CardContent>
+              <div className="card-content">
+              <Typography variant="body2">
+                {description}
+              </Typography>
+
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </ReactCardFlip>
+    </div>
+
   );
 };
 

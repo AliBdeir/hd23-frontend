@@ -5,9 +5,10 @@ import { Outlet } from "react-router-dom";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 import DNDPage from "./dnd_page.jsx"
-import ResultPageLayout, { ResultPage } from "./result_page.jsx"
+import { ResultPageLayout, ResultPage } from "./result_page.jsx"
 
 import "./index.css"
+import FlashcardPage from './flashcard_page.jsx';
 
 function MainPageLayout() {
   return <Outlet />
@@ -27,7 +28,7 @@ function App() {
     },
     {
       path: "/result",
-      // element: <ResultPageLayout />,
+      element: <ResultPageLayout />,
       children: [
         {
           path: "/result",
@@ -35,7 +36,7 @@ function App() {
         },
         {
           path: "/result/:chapter_id/flash",
-          element: <ResultPage />
+          element: <FlashcardPage />
         },
         {
           path: "/result/:chapter_id/quiz",
