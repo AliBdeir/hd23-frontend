@@ -87,7 +87,7 @@ export function ResultPage() {
 
 
 export function ResultPageLayout() {
-    return <div className="flex justify-center bg-green-500">
+    return <div className="flex justify-center">
         <div className="max-w-3xl" >
             <Outlet />
         </div>

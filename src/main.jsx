@@ -41,7 +41,7 @@ function App() {
         },
         {
           path: "/result/:chapter_id/quiz",
-          element: <ResultPage />
+          element: <QuizPage />
         },
         {
           path: "/result/:chapter_id/assignment",
@@ -51,10 +51,6 @@ function App() {
       ]
     },
     //temp quizpage route
-    {
-      path: "/quizpage",
-      element: <QuizPage />
-    }
     // {
     //   path: "/result",
     //   element: <ResultPageLayout />,

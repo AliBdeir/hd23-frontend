@@ -1,6 +1,7 @@
 // src/quiz_page.jsx
 import React, { useState } from 'react';
 import QuizCard from './components/QuizCard';
+import { Button } from '@mui/material';
 
 function QuizPage() {
   // An array of quiz data
@@ -39,7 +40,7 @@ function QuizPage() {
       
       <h1 className="text-5xl mb-4">Quiz</h1>
       
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmitQuiz(); }}>
+      <form className="flex flex-col items-center"  onSubmit={(e) => { e.preventDefault(); handleSubmitQuiz(); }}>
         <div className="quiz-section flex flex-col items-center">
           {quizData.map((data, index) => (
             <QuizCard 
@@ -51,7 +52,7 @@ function QuizPage() {
             />
           ))}
         </div>
-        {!isQuizSubmitted && <button type="submit">Submit Quiz</button>}
+        {!isQuizSubmitted && <Button variant="contained" type="submit">Submit Quiz</Button>}
       </form>
     </div>
   );

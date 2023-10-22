@@ -33,24 +33,29 @@ function FlashcardPage() {
         { title: 'Card 2', description: 'Description 2', },
     ];
 
-    return <div
-        className="flex"
-    >
-        {/* Map through the cardData array to create an ActionAreaCard for each item */}
-        <IconButton onClick={() => {if (cardIndex < cardData.length - 1) setCardIndex(cardIndex + 1)}}>
-            <ArrowBackIcon />
-        </IconButton>
-        
-        <Flashcard
-            title={cardData[cardIndex].title}
-            description={cardData[cardIndex].description}
-        />
+    return <div className='flex flex-col justify-center h-screen'>
+        <h1 className="text-3xl font-bold text-center">Here are your flash cards!</h1>
+        <div
+            className="flex justify-center items-center"
+        >
 
-        <IconButton onClick={() => {if (cardIndex < cardData.length - 1) setCardIndex(cardIndex + 1)}}>
-            <ArrowForwardIcon />
-        </IconButton>
+            {/* Map through the cardData array to create an ActionAreaCard for each item */}
+            <IconButton onClick={() => { if (cardIndex < cardData.length - 1) setCardIndex(cardIndex + 1) }}>
+                <ArrowBackIcon />
+            </IconButton>
 
+            <Flashcard
+                title={cardData[cardIndex].title}
+                description={cardData[cardIndex].description}
+            />
+
+            <IconButton onClick={() => { if (cardIndex < cardData.length - 1) setCardIndex(cardIndex + 1) }}>
+                <ArrowForwardIcon />
+            </IconButton>
+
+        </div>
     </div>
+
 
 }
 
